@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+.menu>*{
+    display: block;
+    position: relative;
+    width: 120px;
+    font-size: 30px;
+    margin-left: calc(50% - 60px);
+}
