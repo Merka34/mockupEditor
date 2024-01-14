@@ -6,6 +6,7 @@ let h1; //Elemento H1 para clonar
 let img; //Elemento IMG para clonar
 let elementos; //Lista de todos los elementos existentes
 let offset = [0,0]; //
+let offsetClick = [0,0]; //
 let isDown = false;
 let elementoMover;
 let elementoClickeado = null;
@@ -227,6 +228,10 @@ function crearElemento(id){
           nuevoLabel.offsetLeft - e.clientX,
           nuevoLabel.offsetTop - e.clientY
         ];
+        offsetClick = [
+          e.clientX,
+          e.clientY
+        ];
         elementoMover = nuevoLabel;
     }, true);
   } else if (id==1) { //img
@@ -244,6 +249,10 @@ function crearElemento(id){
         offset = [
           nuevoImg.offsetLeft - e.clientX,
           nuevoImg.offsetTop - e.clientY
+        ];
+        offsetClick = [
+          e.clientX,
+          e.clientY
         ];
         elementoMover = nuevoImg;
     }, true);
@@ -282,6 +291,10 @@ function reiniciar() {
         offset = [
           element.offsetLeft - e.clientX,
           element.offsetTop - e.clientY
+        ];
+        offsetClick = [
+          e.clientX,
+          e.clientY
         ];
         elementoMover = element;
     }, true);
@@ -360,7 +373,7 @@ function iniciar() {
 
   document.addEventListener('mousemove', function(event) {
     event.preventDefault();
-    console.log(isDown);
+    console.log(elementoClickeado.style.height);
     if (isDown) {
         mousePosition = {
             x : event.clientX,
@@ -450,7 +463,10 @@ function iniciar() {
 
   }
 
-  main.addEventListener('click', function(event) {
+  main.addEventListener('mousedown', function(event) {
+    if(event.target.tagName !== 'INPUT'){
+      event.preventDefault();
+    }
     if(event.target.tagName !== "DIV") {
       seleccionarElemento(event.target)
     } else if(elementoClickeado !== null){
@@ -460,7 +476,7 @@ function iniciar() {
     activarDesactivarControles();
   });
   if(principal!==null){
-    principal.addEventListener('click', function(event) {
+    principal.addEventListener('mousedown', function(event) {
       if(event.target.tagName === "DIV" && !event.target.parentElement.classList.contains('canvas')) {
         elementoClickeado.classList.remove('elementoSeleccionado');
         elementoClickeado = null;
