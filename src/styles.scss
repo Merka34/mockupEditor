@@ -1,8 +1,118 @@
 /* You can add global styles to this file, and also import other style files */
-.menu>*{
-    display: block;
-    position: relative;
-    width: 120px;
-    font-size: 30px;
-    margin-left: calc(50% - 60px);
+/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+//@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+//@import '~@angular/material/theming';
+@import 'gridlex';
+
+@import './assets/scss/core/variables';
+
+@import './assets/vendors/vendors.min.css';
+
+//*** vertical modern ***//
+@import './assets/scss/themes/vertical-modern-menu-template/materialize';
+@import './assets/scss/themes/vertical-modern-menu-template/style';
+@import './assets/css/custom/custom.css';
+
+// *** dashboard-modern *** //
+@import './assets/vendors/animate-css/animate.css';
+@import './assets/vendors/chartist-js/chartist.min.css';
+@import './assets/vendors/chartist-js/chartist-plugin-tooltip.css';
+
+@import './assets/css/pages/app-contacts.min.css';
+@import './assets/css/pages/dashboard-modern.css';
+@import './assets/css/pages/intro.min.css';
+
+@import './assets/css/pages/app-sidebar.min.css';
+@import './assets/vendors/quill/quill.snow.css';
+@import './assets/vendors/noUiSlider/nouislider.min.css';
+@import './assets/css/pages/user-profile-page.min.css';
+@import './assets/css/pages/dashboard.min.css';
+@import './assets/css/pages/eCommerce-products-page.css';
+@import './assets/css/pages/app-email.min.css';
+@import './assets/css/pages/app-email-content.min.css';
+@import './assets/css/pages/app-chat.min.css';
+@import './assets/css/pages/app-calendar.min.css';
+@import './assets/vendors/fullcalendar/css/fullcalendar.min.css';
+@import './assets/vendors/fullcalendar/css/main.min.css';
+@import './assets/vendors/fullcalendar/daygrid/daygrid.min.css';
+@import './assets/vendors/fullcalendar/timegrid/timegrid.min.css';
+@import './assets/vendors/rateYo/jquery.rateyo.min.css';
+
+@import './assets/scss/material-dashboard';
+
+$default-palette: (
+        100: $main-color,
+        700: $main-color-medium,
+        500: $main-color,
+        900: $main-color-medium,
+        contrast: (
+                50: rgba(black, 0.87),
+                100: rgba(black, 0.87),
+                200: rgba(black, 0.87),
+                300: white
+        )
+);
+
+$my-app-primary: mat.define-palette($default-palette, 500);
+$my-app-accent: mat.define-palette($default-palette, 900);
+$my-app-warn: mat.define-palette(mat.$red-palette, 500);
+$my-app-theme: mat.define-light-theme((
+        color: (
+                primary: $my-app-primary,
+                accent: $my-app-accent,
+                warn: $my-app-warn,
+        ),
+        typography: mat.define-typography-config(),
+        density: 0,
+));
+
+@include mat.all-component-themes($my-app-theme);
+
+$space_amounts: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20, 21, 22, 23, 24, 25, 30, 35, 40, 45, 50, 60, 70, 80, 90, 100, auto);
+
+$sides: (top, bottom, left, right);
+
+@each $space in $space_amounts {
+  @each $side in $sides {
+    @if type-of($space) == number {
+      .m-#{str-slice($side, 0, 1)}-#{$space} {
+        margin-#{$side}: #{$space}px !important;
+      }
+      .p-#{str-slice($side, 0, 1)}-#{$space} {
+        padding-#{$side}: #{$space}px !important;
+      }
+      .m-#{$space} {
+        margin: #{$space}px !important;
+      }
+      .p-#{$space} {
+        padding: #{$space}px !important;
+      }
+    } @else {
+      .m-#{str-slice($side, 0, 1)}-#{$space} {
+        margin-#{$side}: #{$space} !important;
+      }
+      .p-#{str-slice($side, 0, 1)}-#{$space} {
+        padding-#{$side}: #{$space} !important;
+      }
+      .m-#{$space} {
+        margin: #{$space} !important;
+      }
+      .p-#{$space} {
+        padding: #{$space} !important;
+      }
+    }
+  }
 }
+
+
+/*.menu > * {
+  display: block;
+  position: relative;
+  width: 120px;
+  font-size: 30px;
+  margin-left: calc(50% - 60px);
+}*/

@@ -1,0 +1,17 @@
+<!-- BEGIN: navbar-->
+<app-navbar></app-navbar>
+<!-- END: navbar-->
+
+<!-- BEGIN: Search-->
+<!--<app-search></app-search>-->
+<!-- END: Search-->
+
+<!-- BEGIN: SideNav-->
+<app-sidebar [menuItems]="menu"></app-sidebar>
+<!-- END: SideNav-->
+
+<!-- BEGIN: Main-->
+<div id="main">
+    <router-outlet></router-outlet>
+    <div class="content-overlay"></div>
+</div>

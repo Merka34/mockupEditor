@@ -31,7 +31,7 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "src/assets/app.js"
+              "src/assets/js/vendors.min.js"
             ]
           },
           "configurations": {
@@ -105,5 +105,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

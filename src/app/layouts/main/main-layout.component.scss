@@ -1,0 +1,21 @@
+.modal-action {
+  margin: 5px 4px 0 4px !important;
+  padding: 0 10px 0 10px !important;
+}
+
+.modal-size {
+  z-index: 9999;
+  width: 30%;
+}
+
+@media only screen and (max-width: 720px) {
+  .modal-size {
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .modal-size {
+    width: 80%;
+  }
+}
